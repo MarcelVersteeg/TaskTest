@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <StringElemements Include="A" />
+    <StringElemements Include="B" />
+    <StringElemements Include="C" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)Task/Tasks.csproj">
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)../Task/bin/$(Configuration)/net10.0/Tasks.dll"
+             Runtime="NET"
+             TaskName="Tasks.MyCustomTask" />
+
+  <Target Name="MyTarget"
+          BeforeTargets="BeforeBuild">
+    <MyCustomTask StringArray="@(StringElements)" />
+  </Target>
+</Project>

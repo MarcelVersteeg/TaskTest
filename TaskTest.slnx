@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Task/Tasks.csproj" />
+  <Project Path="TaskUser/TaskUser.csproj" />
+</Solution>
