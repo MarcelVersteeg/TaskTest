@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <StringElemements Include="A" />
-    <StringElemements Include="B" />
-    <StringElemements Include="C" />
+    <StringElements Include="A" />
+    <StringElements Include="B" />
+    <StringElements Include="C" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +24,8 @@
              TaskName="Tasks.MyCustomTask" />
 
   <Target Name="MyTarget"
-          BeforeTargets="BeforeBuild">
+          BeforeTargets="BeforeBuild"
+          Outputs="$(MSBuildProjectDirectory)/Test.%(StringElements.Identity).txt">
     <MyCustomTask StringArray="@(StringElements)" />
   </Target>
 </Project>
